@@ -11,14 +11,14 @@ const generateSquareComponents = (squares, onClickCallback) => {
   //  of square components
   const oneDarray = [].concat(...squares)
   return oneDarray.map((square) => {
-      return <Square value={square.value} id={square.id} onClickCallback={() => { }} />
+      return <Square value={square.value} id={square.id} onClickCallback={onClickCallback} />
   })
 
 }
 
 const Board = ({ squares, onClickCallback }) => {
   const squareList = generateSquareComponents(squares, onClickCallback);
-  console.log(squareList);
+//   console.log(squareList);
   return <div className="grid" >
     {squareList}
   </div>

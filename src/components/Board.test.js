@@ -3,10 +3,7 @@ import '@testing-library/jest-dom/extend-expect';
 import Board from './Board';
 import { render, screen, fireEvent} from '@testing-library/react'
 
-
-describe('Wave 1: Board', () => {
-  // Sample input to the Board component
-  const SAMPLE_BOARD = [
+const SAMPLE_BOARD = [
     [
       {
         value: 'X',
@@ -50,6 +47,9 @@ describe('Wave 1: Board', () => {
       },
     ],    
   ];
+describe('Wave 1: Board', () => {
+  // Sample input to the Board component
+  
 
   test('that board will render with the proper number of Xs and Os', () => {
     // Act
@@ -84,7 +84,7 @@ describe('Wave 1: Board', () => {
 });
 describe('Wave 2: Board', () => {
   describe('button click callbacks', () => {
-    test.skip('that the callback is called for the 1st button', () => {
+    test('that the callback is called for the 1st button', () => {
       // Arrange
       const callback = jest.fn();
       const { container } = render(<Board squares={SAMPLE_BOARD} onClickCallback={callback} />);
@@ -97,7 +97,7 @@ describe('Wave 2: Board', () => {
       expect(callback).toHaveBeenCalled();
     });
 
-    test.skip('that the callback is called for the last button', () => {
+    test('that the callback is called for the last button', () => {
       // Arrange
       const callback = jest.fn();
       const { container } = render(<Board squares={SAMPLE_BOARD} onClickCallback={callback} />);
