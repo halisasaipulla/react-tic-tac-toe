@@ -32,7 +32,7 @@ const App = () => {
     const [squares, setSquares] = useState(generateSquares());
     const [currentPlayer, setCurrentPlayer] = useState('x');
     const [winner, setWinner] = useState('');
-
+    
   // Wave 2
   // You will need to create a method to change the square 
   //   When it is clicked on.
@@ -49,10 +49,12 @@ const App = () => {
                 setCurrentPlayer(PLAYER_2);
         } else {
             setCurrentPlayer(PLAYER_1)
+        
         };
         }
         setSquares(newBoard)
         setWinner(checkForWinner());
+        
     
     }
 
@@ -93,16 +95,16 @@ const App = () => {
 
     const resetGame = () => {
     // Complete in Wave 4
-    setSquares(generateSquares());
-    setCurrentPlayer(0);
-    setWinner('');
+        setSquares(generateSquares());
+        setCurrentPlayer(0);
+        setWinner('');
     }
 
     return (
         <div className="App">
         <header className="App-header">
             <h1>React Tic Tac Toe</h1>
-            <h2>{winner === null ? `Current Player ${ currentPlayer }` : `Winner is ${ winner }`}</h2>
+            <h2>{winner === null ? `Current player is ${ currentPlayer }` : `Winner is ${ winner }`}</h2>
             <button onClick={resetGame}>Reset Game</button>
         </header>
         <main>
