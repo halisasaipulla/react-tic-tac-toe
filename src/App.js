@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 
 import Board from './components/Board';
+import Square from './components/Square';
 
 const PLAYER_1 = 'x';
 const PLAYER_2 = 'o';
@@ -41,9 +42,11 @@ const App = () => {
         const newBoard = [...squares]
         const row = Math.floor(updateSquare.id/3)
         const col = updateSquare.id%3
-
+        if (newBoard[row][col].value===''){
         newBoard[row][col]=updateSquare
+        
         updateSquare.value = currentPlayer
+        
         if (currentPlayer.value !== '') {
             if (currentPlayer === 'x') {
                 setCurrentPlayer(PLAYER_2);
@@ -51,6 +54,7 @@ const App = () => {
             setCurrentPlayer(PLAYER_1)
         
         };
+    }
         }
         setSquares(newBoard)
         setWinner(checkForWinner());
