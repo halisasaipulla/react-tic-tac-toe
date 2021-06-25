@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 
 import Board from './components/Board';
-import Square from './components/Square';
+// import Square from './components/Square';
 
 const PLAYER_1 = 'x';
 const PLAYER_2 = 'o';
@@ -43,18 +43,16 @@ const App = () => {
         const row = Math.floor(updateSquare.id/3)
         const col = updateSquare.id%3
         if (newBoard[row][col].value===''){
-        newBoard[row][col]=updateSquare
+            updateSquare.value = currentPlayer
+            newBoard[row][col]=updateSquare
         
-        updateSquare.value = currentPlayer
-        
-        if (currentPlayer.value !== '') {
-            if (currentPlayer === 'x') {
+                if (currentPlayer === 'x') {
                 setCurrentPlayer(PLAYER_2);
-        } else {
-            setCurrentPlayer(PLAYER_1)
+                } else {
+                    setCurrentPlayer(PLAYER_1)
         
         };
-    }
+
         }
         setSquares(newBoard)
         setWinner(checkForWinner());
@@ -100,7 +98,7 @@ const App = () => {
     const resetGame = () => {
     // Complete in Wave 4
         setSquares(generateSquares());
-        setCurrentPlayer(0);
+        setCurrentPlayer('x');
         setWinner('');
     }
 
@@ -108,11 +106,11 @@ const App = () => {
         <div className="App">
         <header className="App-header">
             <h1>React Tic Tac Toe</h1>
-            <h2>{winner === null ? `Current player is ${ currentPlayer }` : `Winner is ${ winner }`}</h2>
+            <h2>{winner === undefined ? `Current player is ${currentPlayer}` : `Winner is ${ winner }`}</h2>
             <button onClick={resetGame}>Reset Game</button>
         </header>
         <main>
-            <Board squares={squares} onClickCallback={ handlingClick } currentPlayer={ currentPlayer }/>
+            <Board squares={squares} onClickCallback={ handlingClick } />
         </main>
         </div>
 );
